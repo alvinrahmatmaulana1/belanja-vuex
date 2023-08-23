@@ -9,21 +9,21 @@
         </a>
         <div class="flex md:order-2">
           <div v-if="isAuthenticated">
-            <router-link to="/cart">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="file: mt-1 h-8 w-8 mr-10">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-            </svg>
+            <router-link to="/cart-checkout" class="relative inline-flex items-center mr-4 px-5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+              </svg>
 
-            <div
-              class="absolute inline-flex items-center justify-center  w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full mt-4 mr-32 -top-2 -right-2 dark:border-gray-950">
-              2
-            </div>
-          </router-link>
+              <div
+                class="absolute inline-flex items-center justify-center mr-4 w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                2
+              </div>
+            </router-link>
           </div>
           <div v-if="isAuthenticated">
-            <div class="mt-1.5">
+            <div >
               <a @click="logout"
                 class="text-white  cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 -top-9 md:mr-0  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Logout</a>
             </div>

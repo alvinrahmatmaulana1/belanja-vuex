@@ -32,7 +32,7 @@ const routes = [
         component: contact
     },
     {
-        path: '/produk/:id',
+        path: '/produk/:slug',
         name: 'SingleProduk',
         component: singleproduk
     },

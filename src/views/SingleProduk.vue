@@ -1,6 +1,6 @@
 <template>
   <section class="py-12 sm:py-16">
-    <div v-if="product">
+    <div v-if="products">
       <div class="container mx-auto px-4">
         <nav class="flex">
           <ol role="list" class="flex items-center">
@@ -41,13 +41,13 @@
             <div class="lg:flex lg:items-start">
               <div class="lg:order-2 lg:ml-5">
                 <div class="max-w-xl overflow-hidden rounded-lg">
-                  <img class="h-full w-full max-w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
+                  <img class="h-full w-full max-w-full object-cover" src="" alt="" />
                 </div>
               </div>
 
               <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                 <div class="flex flex-row items-start lg:flex-col">
-                  <button type="button"
+                  <!-- <button type="button"
                     class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
                     <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
                   </button>
@@ -58,14 +58,14 @@
                   <button type="button"
                     class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
                     <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
-                  </button>
+                  </button> -->
                 </div>
               </div>
             </div>
           </div>
 
           <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-            <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{ product.name }}</h1>
+            <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{ products.name }}</h1>
 
             <div class="mt-5 flex items-center">
               <div class="flex items-center">
@@ -150,15 +150,10 @@
               </label>
             </div>
 
-            <div class="sm:order-1">
-              <div class="mx-auto flex h-8 items-stretch text-gray-600">
-                <button
-                  class="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white">-</button>
-                <div class="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                  1</div>
-                <button
-                  class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white">+</button>
-              </div>
+            <div class="flex items-center mt-5">
+              <button class="border rounded-md py-2 px-4 mr-2">-</button>
+              <span class="text-center w-20 border rounded-md py-2 px-2  ">1</span>
+              <button class="border rounded-md py-2 px-4 ml-2">+</button>
             </div>
 
 
@@ -232,34 +227,35 @@
             </div>
 
             <div class="mt-8 flow-root sm:mt-12">
-            <h1 class="text-3xl font-bold">Delivered To Your Door</h1>
-            <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusantium nesciunt fuga.</p>
-            <h1 class="mt-8 text-3xl font-bold">From the Fine Farms of Brazil</h1>
-            <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam enim facere.</p>
-            <p class="mt-4">Amet consectetur adipisicing elit. Optio numquam enim facere. Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Dolore rerum nostrum eius facere, ad neque.</p>
+              <h1 class="text-3xl font-bold">Delivered To Your Door</h1>
+              <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusantium nesciunt fuga.</p>
+              <h1 class="mt-8 text-3xl font-bold">From the Fine Farms of Brazil</h1>
+              <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam enim facere.</p>
+              <p class="mt-4">Amet consectetur adipisicing elit. Optio numquam enim facere. Lorem ipsum dolor sit amet
+                consectetur, adipisicing elit. Dolore rerum nostrum eius facere, ad neque.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div v-else>
-    <div class="h-screen bg-white">
-      <div class="flex justify-center items-center h-full">
-        <img class="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="">
+    <div v-else>
+      <div class="h-screen bg-white">
+        <div class="flex justify-center items-center h-full">
+          <img class="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="">
+        </div>
       </div>
     </div>
-  </div>
-</section></template>
+  </section>
+</template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters("product", ["getProdukById"]),
-    product() {
-      return this.getProdukById(Number(this.$route.params.id));
+    ...mapGetters("product", ["getProdukSlug"]),
+    products() {
+      return this.getProdukSlug(this.$route.params.slug);
     },
   },
   methods: {
@@ -270,10 +266,11 @@ export default {
   beforeMount() {
     this.fetchProduk()
   },
-  mounted() {
-    const produkId = this.$route.params.id;
-    this.fetchSingleProduk(produkId)
-  }
+  mounted(){
+      const Slug = this.$route.params.slug;
+      this.fetchSingleProduk(Slug)
+      console.log(Slug)
+    }
 
 
 };
