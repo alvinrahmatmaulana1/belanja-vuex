@@ -150,9 +150,11 @@
               </label>
             </div>
 
+            <!-- counter -->
             <div class="flex items-center mt-5">
               <button class="border rounded-md py-2 px-4 mr-2">-</button>
-              <span class="text-center w-20 border rounded-md py-2 px-2  ">1</span>
+              <input type="number" min="1" value="1" class="  text-center w-20 border rounded-md py-2 px-2  ">
+              <!-- <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1"> -->
               <button class="border rounded-md py-2 px-4 ml-2">+</button>
             </div>
 
@@ -175,18 +177,32 @@
                 <h1 class="text-3xl font-bold">$60.50</h1>
                 <span class="text-base">/month</span>
               </div>
-              <router-link to="/cart">
+
+              <div v-if="token">
                 <button type="button"
                   class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
                   <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
-                  Add to cart
+                  + Keranjang
+                </button>
+              </div>
+
+              <div v-else>
+              <router-link to="/login">
+                <button type="button"
+                  class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  + keranjang
                 </button>
               </router-link>
             </div>
-
+            </div>
+            
             <ul class="mt-8 space-y-2">
               <li class="flex items-center text-left text-sm font-medium text-gray-600">
                 <svg class="mr-2 block h-5 w-5 align-middle text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -233,6 +249,7 @@
               <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam enim facere.</p>
               <p class="mt-4">Amet consectetur adipisicing elit. Optio numquam enim facere. Lorem ipsum dolor sit amet
                 consectetur, adipisicing elit. Dolore rerum nostrum eius facere, ad neque.</p>
+               
             </div>
           </div>
         </div>
@@ -252,6 +269,11 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
+  data(){
+    return {
+      token : null
+    }
+  },
   computed: {
     ...mapGetters("product", ["getProdukSlug"]),
     products() {
@@ -260,16 +282,22 @@ export default {
   },
   methods: {
     ...mapActions("product", ["fetchSingleProduk"]),
-    ...mapActions("product", ["fetchProduk"])
+    ...mapActions("product", ["fetchProduk"]),
+    ...mapActions("keranjang", ["fetchKeranjang"])
 
   },
   beforeMount() {
     this.fetchProduk()
+    this.fetchKeranjang()
+   
   },
   mounted(){
       const Slug = this.$route.params.slug;
       this.fetchSingleProduk(Slug)
-      console.log(Slug)
+      
+      //cek token
+      const cektoken = localStorage.getItem('token');
+      this.token = cektoken
     }
 
 

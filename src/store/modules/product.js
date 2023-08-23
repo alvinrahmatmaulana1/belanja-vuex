@@ -7,18 +7,9 @@ const produk = {
   },
   getters: {
     getProduk: (state) => state.produkData,
-    //
-    // getProdukBySlug: (state) => (produkSlug) => {
-    //   console.log("ProdukSlug:", produkSlug);
-    //   console.log("ProdukData:", state.produkData);
-    //   const produk = state.produkData.find((p) => p.slug == produkSlug);
-    //     console.log("Produk:", produk);
-       
-    //     return produk;
-  // },
   getProdukSlug: (state) => (Slug) => {
     const produk = state.produkData.find((p) => p.slug == Slug)
-    console.log(produk)
+    // console.log(produk)
     return produk
   }
 },
