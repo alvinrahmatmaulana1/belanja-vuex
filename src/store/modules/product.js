@@ -19,8 +19,8 @@ const produk = {
   actions: {
     async fetchProduk({ commit }) {
       try {
-        const data = await axios.get("https://ecommerce.olipiskandar.com/api/v1/product/search");
-        commit("SET_PRODUK", data.data['products']['data']);
+        const data = await axios.get("https://ecommerce.olipiskandar.com/api/v1/product/latest/9");
+        commit("SET_PRODUK", data.data['data']);
       } catch (error) {
         alert(error);
         console.log(error);

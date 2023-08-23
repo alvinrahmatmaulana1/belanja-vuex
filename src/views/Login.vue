@@ -1,4 +1,6 @@
 <template>
+    <div >
+        
     <div class="flex items-center justify-center min-h-screen bg-gray-100 ">
         <div class="px-8 py-6 mx-4 mt-20 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/">
             <div class="flex justify-center">
@@ -34,9 +36,15 @@
                         </a>
                     </div>
                 </div>
+                
             </form>
         </div>
     </div>
+    </div>
+    <div >
+        gagal
+    </div>
+    
 </template>
 
 <script>
@@ -58,6 +66,7 @@ export default {
             };
 
             const success = await this.login(credentials);
+            
 
             if (success) {
                 // Redirect to the desired route on successful login

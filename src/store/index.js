@@ -3,7 +3,7 @@ import auth from './modules/auth';
 import product from './modules/product'
 import category from './modules/category';
 import brands from './modules/brands';
-
+import user from './modules/users';
 
 
 const store = createStore({
@@ -14,7 +14,8 @@ const store = createStore({
     auth,
     product,
     category,
-    brands
+    brands,
+    user
     
   },
 });

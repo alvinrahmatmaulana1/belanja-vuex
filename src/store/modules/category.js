@@ -14,7 +14,7 @@ const category = {
                 const cate = await axios.get(
                     "https://ecommerce.olipiskandar.com/api/v1/all-categories"
                 );
-                commit("SET_CATEGORY", cate.data['data']);
+                commit("SET_CATEGORY", cate.data.data.slice(0,9));
             } catch (error) {
                 alert(error);
                 console.log(error);

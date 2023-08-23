@@ -8,6 +8,7 @@ import cart from "../views/Cart.vue"
 import checkout from "../views/Checkout.vue"
 import category from "../views/Category.vue"
 import brands from "../views/Brands.vue"
+import profil from "../views/Profil.vue"
 
 const routes = [
     {
@@ -51,11 +52,31 @@ const routes = [
         component: category
     },
     {
-    path: '/brands',
-    name: 'Brands',
-    component: brands
+        path: '/brands',
+        name: 'Brands',
+        component: brands
+    },
+    {
+        path: '/profil',
+        name: 'Profil',
+        beforeEnter: cekToken,
+        component: profil
     }
+
 ]
+function cekToken(to, from, next) {
+    var isAuthenticated = false;
+    if (localStorage.getItem('token')) {
+        isAuthenticated = true;
+        next();
+    }
+    else {
+        isAuthenticated = false;
+        next('/login')
+    }
+
+
+}
 
 const router = createRouter({
     history: createWebHistory(),
