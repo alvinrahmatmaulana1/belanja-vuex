@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <footer class=" bg-white ">
+        <footer class=" bg-white">
             <div class="mx-auto w-full max-w-screen-xl p-4 py-4 lg:py-4">
 
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

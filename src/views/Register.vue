@@ -73,7 +73,7 @@ export default {
     methods: {
         ...mapActions('auth', ['register']),
         async performRegister() {
-            const credentials = {
+            const dataUser = {
                 name: this.name,
                 email: this.email,
                 phone: this.phone,
@@ -81,7 +81,7 @@ export default {
                 confirm_password: this.confirm_password
             };
 
-            const success = await this.register(credentials);
+            const success = await this.register(dataUser);
 
             if (success) {
                 // Redirect to the desired route on successful login

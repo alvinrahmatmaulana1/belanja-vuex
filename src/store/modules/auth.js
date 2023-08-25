@@ -27,11 +27,11 @@ const auth = {
         return false;
       }
     },
-    async register({ commit }, credentials) {
+    async register({ commit }, dataUsers) {
       try {
         const response = await axios.post(
           'https://ecommerce.olipiskandar.com/api/v1/auth/signup',
-          credentials
+          dataUsers
         );
         const token = response.data.access_token;
 
