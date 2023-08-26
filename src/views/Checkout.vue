@@ -3,7 +3,7 @@
   <a href="#" class="text-2xl font-bold text-gray-800">sneekpeeks</a>
   <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
     <div class="relative">
-      <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
+      <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4 py-12">
         <li class="flex items-center space-x-3 text-left sm:space-x-4">
           <a class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-200 text-xs font-semibold text-emerald-700" href="#"
             ><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -29,21 +29,23 @@
     </div>
   </div>
 </div>
-<div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+<!-- //barang -->
+<div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32" >
   <div class="px-4 pt-8">
     <p class="text-xl font-medium">Order Summary</p>
     <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
-    <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+    <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6" v-for="data in getKeranjang">
       <div class="flex flex-col rounded-lg bg-white sm:flex-row">
         <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
         <div class="flex w-full flex-col px-4 py-4">
-          <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-          <span class="float-right text-gray-400">42EU - 8.5US</span>
-          <p class="text-lg font-bold">$138.99</p>
+          <span class="font-semibold">{{ data.name }}</span>
+          <span class="float-right text-gray-400">Jumlah : {{ data.qty }}</span>
+          <p class="text-lg font-bold">{{ data.regular_price * data.qty }}</p>
         </div>
       </div>
     </div>
 
+<!-- //gatau -->
     <p class="mt-8 text-lg font-medium">Shipping Methods</p>
     <form class="mt-5 grid gap-6">
       <div class="relative">
@@ -70,6 +72,8 @@
       </div>
     </form>
   </div>
+
+  <!-- masukan data pengiriman -->
   <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
     <p class="text-xl font-medium">Payment Details</p>
     <p class="text-gray-400">Complete your order by providing your payment details.</p>
@@ -129,7 +133,7 @@
       </div>
       <div class="mt-6 flex items-center justify-between">
         <p class="text-sm font-medium text-gray-900">Total</p>
-        <p class="text-2xl font-semibold text-gray-900">$408.00</p>
+        <p class="text-2xl font-semibold text-gray-900">{{ totalHarga() }}</p>
       </div>
     </div>
     <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
@@ -137,3 +141,33 @@
 </div>
 
 </template>
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+export default {
+  data(){
+    return{
+      number : 0
+    }
+  },
+    computed: {
+        ...mapGetters('keranjang', ['getKeranjang']),
+    },
+    methods: {
+        ...mapActions('keranjang', ['fetchKeranjang']),
+
+        totalHarga() {
+            this.total = this.getKeranjang.reduce((acc, cart) => {
+                return acc + parseFloat(cart.regular_price * cart.qty);
+            }, 0);
+            return this.total.toFixed();
+        },
+
+    },
+    created() {
+        this.fetchKeranjang();
+        
+      
+    }
+}
+</script>

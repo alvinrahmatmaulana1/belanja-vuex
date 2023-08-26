@@ -41,9 +41,9 @@ const produk = {
       try {
         const response = await axios.post(
           'https://ecommerce.olipiskandar.com/api/v1/carts/add', {
-          "variation_id": productId,
-          "qty": 1,
-          "temp_user_id": null
+          "variation_id": productId.variation_id,
+          "qty": productId.qty,
+          // "temp_user_id": null
         }, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

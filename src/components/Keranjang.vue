@@ -19,11 +19,11 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
     
-    data(){
-        return {
-            total : 0
-        }
-    },
+    // data(){
+    //     return {
+    //         total : 0
+    //     }
+    // },
     computed : {
         ...mapGetters('keranjang', ['getKeranjang']),
     },
@@ -34,7 +34,8 @@ export default {
         this.fetchKeranjang()
     },
     created(){
-        this.total = this.fetchKeranjang()
+        // this.total = 
+        this.fetchKeranjang()
     }
 }
 </script>

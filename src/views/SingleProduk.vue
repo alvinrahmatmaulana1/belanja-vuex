@@ -152,10 +152,10 @@
 
             <!-- counter -->
             <div class="flex items-center mt-5">
-              <button class="border rounded-md py-2 px-4 mr-2" @click="kurang">-</button>
-              <span class="text-center w-20 border rounded-md py-2 px-2">{{ cek }}</span>
+              <button @click="decrementQty" class="border rounded-md py-2 px-4 mr-2"  >-</button>
+              <input type="number" class="text-center w-20 border rounded-md py-2 px-2" v-model="number">
               <!-- <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1"> -->
-              <button class="border rounded-md py-2 px-4 ml-2" @click="tambah">+</button>
+              <button  @click="incrementQty" class="border rounded-md py-2 px-4 ml-2" >+</button>
             </div>
 
 
@@ -174,12 +174,12 @@
             <div
               class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
               <div class="flex items-end">
-                <h1 class="text-3xl font-bold">Rp.{{ products.base_price * cek }}</h1>
+                <h1 class="text-3xl font-bold">Rp.{{ products.base_price * qty }}</h1>
                 
               </div>
 
               <div v-if="token">
-                <button type="button" @click="addKeranjang(products.id)"
+                <button type="button" @click="addKeranjang({variation_id :products.variations[0].id, qty:number})"
                   class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
                   <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
@@ -272,7 +272,7 @@ export default {
   data(){
     return {
       token : null,
-      cek : 1
+      number : 1
     }
   },
   computed: {
@@ -284,18 +284,20 @@ export default {
   methods: {
     ...mapActions("product", ["fetchSingleProduk"]),
     ...mapActions("product", ["fetchProduk"]),
-    ...mapActions("keranjang", ["fetchKeranjang"]),
-    ...mapActions("product",["addKeranjang"]),
+    ...mapActions("keranjang", ["fetchKeranjang",]),
+    
 
-    tambah(){
-      this.cek++
-    },
-    kurang(){
-      if(this.cek > 1){
-      this.cek--
+    
+    decrementQty(){
+      if(this.number > 1){
+      this.number--;
       }
-    }
+    },
 
+    incrementQty(){
+      this.number++;
+    },
+    ...mapActions("product",["addKeranjang"]),
   },
   beforeMount() {
     this.fetchProduk()

@@ -2,7 +2,7 @@
   <NavbarComponent/>
   
   <router-view></router-view>
-  <!-- <FooterComponent></FooterComponent> -->
+  <FooterComponent></FooterComponent>
   </template>
   <script>
   import { RouterLink, RouterView } from 'vue-router'
