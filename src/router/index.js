@@ -9,6 +9,7 @@ import checkout from "../views/Checkout.vue"
 import category from "../views/Category.vue"
 import brands from "../views/Brands.vue"
 import profil from "../views/Profil.vue"
+import order from "../views/Order-confirmed.vue"
 
 const routes = [
     {
@@ -22,7 +23,7 @@ const routes = [
         component: Register,
     },
     {
-        path: '/produk',
+        path: '/',
         name: 'Produk',
         component: Produk
     },
@@ -55,6 +56,12 @@ const routes = [
         path: '/brands',
         name: 'Brands',
         component: brands
+    },
+    {
+        path: '/order/:orderCode',
+        name: 'Order',
+        component: order,
+        props: true
     },
     {
         path: '/profil',

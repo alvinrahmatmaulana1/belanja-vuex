@@ -4,8 +4,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3">
                 <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
                     <div>
-                        <p class="font-bold text-gray-700 text-xl">22</p>
-                        <p class="text-gray-400">Friends</p>
+                        <p class="font-bold text-gray-700 text-xl">{{ getKeranjang.length }}</p>
+                        <p class="text-gray-400">Keranjang</p>
                     </div>
                     <div>
                         <p class="font-bold text-gray-700 text-xl">10</p>
@@ -44,10 +44,12 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
     computed: {
-        ...mapGetters('user', ['getUsers'])
+        ...mapGetters('user', ['getUsers']),
+        ...mapGetters('keranjang', ['getKeranjang']),
     },
     methods: {
         ...mapActions('user', ['fetchUsers']),
+        ...mapActions("keranjang", ["fetchKeranjang"])
     },
     created() {
         this.fetchUsers();

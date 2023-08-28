@@ -174,7 +174,7 @@
             <div
               class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
               <div class="flex items-end">
-                <h1 class="text-3xl font-bold">Rp.{{ products.base_price * qty }}</h1>
+                <h1 class="text-3xl font-bold">Rp.{{ products.base_price * number }}</h1>
                 
               </div>
 

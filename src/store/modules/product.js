@@ -49,7 +49,7 @@ const produk = {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
-        alert("Berhasil Nemambah")
+        alert("Berhasil Menambah")
         commit("ADD_KERANJANG", response.data)
         
       } catch (error) {

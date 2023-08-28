@@ -37,15 +37,7 @@
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">Alamat</p>
-          <p class="text-gray-700">{{ getAddress[0].address }}</p>
-        </div>
-        <div class="flex justify-between">
-          <p class="text-gray-700">Alamat</p>
-          <p class="text-gray-700">{{ getAddress[0].city }}</p>
-        </div>
-        <div class="flex justify-between">
-          <p class="text-gray-700">Alamat</p>
-          <p class="text-gray-700">{{ getAddress[0].state }}</p>
+          <p class="text-gray-700">{{ getAddress.state }}</p>
         </div>
         <hr class="my-4" />
         <div class="flex justify-between">
