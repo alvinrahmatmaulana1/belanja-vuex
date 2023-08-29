@@ -12,7 +12,7 @@
 
               <Keranjang/>
               <button @click="logout" type="button"
-                  class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Keluar</button>
+                  class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center  md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Keluar</button>
                   <router-link to="/profil">
                   <a href="">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -33,6 +33,7 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M1 1h15M1 7h15M1 13h15" />
                   </svg>
+                  
               </button>
 
           </div>
