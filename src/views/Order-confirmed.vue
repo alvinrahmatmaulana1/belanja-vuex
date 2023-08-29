@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center border-b bg-white py-3 mt-2 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
-    <router-link to="/"><a href="#" class="text-2xl font-bold text-gray-800">Vinn Store</a></router-link>
+    <router-link to="/"><a href="#" class="text-2xl font-bold text-gray-800">Vinn Shop</a></router-link>
     <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
       <div class="relative">
         <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
@@ -41,6 +41,18 @@
           <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Pemesanan Berhasil</h3>
           <p class="text-gray-600 my-2">Terima kasih telah membeli produk dari kami</p>
           <p> Kode Pesanana : {{ getOrder.code }} </p>
+        </div>
+        <div class="text-center">
+            <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Done!</h3>
+            <p class="text-gray-600 my-2">Thank you for completing your secure online payment.</p>
+            <p> Have a great day!  </p>
+            <div class="py-10 text-center">
+              <router-link to="/">
+                <a href="#" class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                    Kembali
+               </a>
+              </router-link>
+            </div>
         </div>
       </div>
       <div class="mx-10 mt-10">
