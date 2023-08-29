@@ -3,8 +3,8 @@
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
           <router-link to="/" class="flex items-center">
-              <img src="" class="h-9 mr-3" alt="Flowbite Logo" />
-              <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vinn Store</span>
+              <!-- <img src="" class="h-9 mr-3" alt="Flowbite Logo" /> -->
+              <span class="self-center  text-2xl font-semibold whitespace-nowrap dark:text-white">Vinn Shop</span>
           </router-link>
 
 
@@ -12,8 +12,7 @@
 
               <Keranjang/>
               <button @click="logout" type="button"
-                  class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Sign
-                  out</button>
+                  class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Keluar</button>
                   <router-link to="/profil">
                   <a href="">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -39,8 +38,12 @@
           </div>
           <div v-else class="flex md:order-2">
               <router-link to="/login" type="button"
+                  class="text-white bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-red-800">
+                  Masuk
+              </router-link>
+              <router-link to="/register" type="button"
                   class="text-white bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-red-800">
-                  Sign in
+                 Daftar
               </router-link>
               <button data-collapse-toggle="navbar-cta" type="button"
                   class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -61,29 +64,27 @@
                   <li>
                       <router-link to="/">
                           <a href="#"
-                              class="block py-2 pl-3 pr-4 text-white bg-red-700 rounded md:bg-transparent md:text-red-700 md:p-0 md:dark:text-red-500"
-                              aria-current="page">Home</a>
+                              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                              aria-current="page">Beranda</a>
                       </router-link>
                   </li>
                   <li>
                       <router-link to="/category">
                           <a href="#"
-                              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">All
-                              Categories</a>
+                              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Kategori</a>
                       </router-link>
                   </li>
                   <li>
                       <router-link to="/brands">
                           <a href="#"
-                              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">All
-                              Brands</a>
+                              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Brands</a>
                       </router-link>
                   </li>
                   <li>
-                    <router-link to="/contak">
+                    <!-- <router-link to="/contak">
                       <a href="#"
                           class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700 md:p-0 md:dark:hover:text-red-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                  </router-link>
+                  </router-link> -->
                 </li>
               </ul>
           </div>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const produk = {
   namespaced: true,
@@ -49,7 +50,13 @@ const produk = {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
-        alert("Berhasil Menambah")
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Berhasil Menambah',
+          showConfirmButton: false,
+          timer: 1500
+      })
         commit("ADD_KERANJANG", response.data)
         
       } catch (error) {

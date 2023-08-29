@@ -8,8 +8,8 @@
                         <p class="text-gray-400">Keranjang</p>
                     </div>
                     <div>
-                        <p class="font-bold text-gray-700 text-xl">10</p>
-                        <p class="text-gray-400">Photos</p>
+                        <p class="font-bold text-gray-700 text-xl">{{ getUsers.balance}}</p>
+                        <p class="text-gray-400">balance</p>
                     </div>
                     <div>
                         <p class="font-bold text-gray-700 text-xl">89</p>
@@ -23,19 +23,23 @@
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                             clip-rule="evenodd" />
                     </svg> </div>
+                </div>
             </div>
-            <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center"><button
-                    class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                    Connect</button> <button
-                    class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                    Message</button> </div>
-        </div>
+            
         <div class="mt-20 text-center border-b pb-12">
             <h1 class="text-4xl font-medium text-gray-700">{{ getUsers.name }}</h1>
             <p class="font-light text-gray-600 mt-3">{{ getUsers.email }}</p>
-            <p class="mt-8 text-gray-500">Solution Manager - Creative Tim Officer</p>
-            <p class="mt-2 text-gray-500">University of Computer Science</p>
+            <p class="mt-8 text-gray-500">{{ getUsers.phone }}</p>
+            <h1 class="mt-2 text-gray-500">Alamat</h1>
+            <hr>
+            <p class=" text-left">Jalan : {{ getAddress.address }}</p>
+            <p class=" text-left">Kota : {{ getAddress.city }}</p>
+            <p class=" text-left">Profinsi : {{ getAddress.state }}</p>
+            <p class=" text-left">Negara : {{ getAddress.country }}</p>
         </div>
+
+       
+        
         
     </div>
 </div></template>
@@ -45,14 +49,17 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
     computed: {
         ...mapGetters('user', ['getUsers']),
-        ...mapGetters('keranjang', ['getKeranjang']),
+        ...mapGetters('keranjang', ['getKeranjang','getAddress']),
+        ...mapGetters('order', ['getOrder'])
     },
     methods: {
         ...mapActions('user', ['fetchUsers']),
-        ...mapActions("keranjang", ["fetchKeranjang"])
+        ...mapActions("keranjang", ["fetchKeranjang","fetchAddress"]),
+        ...mapActions('order',['fetchOrderData'])
     },
     created() {
         this.fetchUsers();
+        this.fetchAddress()
     }
 }
 

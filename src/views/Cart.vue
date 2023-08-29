@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class=" py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-    <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
-    <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+    <h1 class="mb-10 text-center text-2xl font-bold">Keranjang</h1>
+    <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0" v-if="getKeranjang != 0">
       <div class="rounded-lg md:w-2/3">
         <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start" v-for="cart in getKeranjang" :key="cart.cart_id">
           <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="product-image" class="w-full rounded-lg sm:w-40" />
@@ -51,6 +51,22 @@
         <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
       </router-link>
     </div>
+    </div>
+    <div v-else>
+      <div class="sm:flex items-center max-w-screen-xl  -mt-20">
+    <div class="sm:w-1/2 p-10">
+        <div class="image object-center text-center">
+            <img src="https://img.freepik.com/free-vector/empty-concept-illustration_114360-1188.jpg?size=626&ext=jpg&ga=GA1.1.975559454.1690599805&semt=ais">
+        </div>
+    </div>
+    <div class="sm:w-1/2 p-5">
+        <div class="text">
+            <h2 class="my-4 font-bold text-3xl  sm:text-4xl "><span class="text-indigo-600">Tidak Ada Produk</span>
+            </h2>
+            
+        </div>
+    </div>
+</div>
     </div>
   </div>
   </div>

@@ -27,6 +27,25 @@ const user = {
             }
         },
     },
+
+    // async addAddress({ commit }) {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const cate = await axios.post(
+    //             "https://ecommerce.olipiskandar.com/api/v1/user/address/create", {
+    //                 headers: {
+    //                     'Authorization': `Bearer ${token}`
+    //                 }
+    //             }
+    //         );
+    //         console.log(cate.data['user'])
+    //         commit("SET_USERS", cate.data['user']);
+    //     } catch (error) {
+    //         alert(error);
+    //         console.log(error);
+    //     }
+    // },
+
     mutations: {
         SET_USERS(state, users) {
             state.users = users;

@@ -52,6 +52,7 @@
       </div>
 
       <p class="mt-8 text-lg font-medium">Delivery Option</p>
+      <div >
       <form class="mt-5 grid gap-6">
         <div class="relative">
           <input class="peer hidden" id="radio_1" type="radio" value="standard" v-model="deliveryType" />
@@ -82,6 +83,7 @@
           </label>
         </div>
       </form>
+    </div>
 
       <p class="mt-8 text-lg font-medium">Shipping Methods</p>
       <form class="mt-5 grid gap-6">
@@ -101,54 +103,59 @@
             </div>
           </label>
         </div>
-        <div class="relative">
-          <input class="peer hidden" id="radio_4" type="radio" value="Payment Wallet" v-model="paymentType" />
-          <span
-            class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-          <label
-            class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
-            for="radio_4">
-            <img class="w-14 object-contain"
-              src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-orange-wallet-icon-png-image_4462385.jpg"
-              alt="" />
-            <div class="ml-5 mt-4">
-              <span class="mt-16 font-semibold leading-6">Payment Wallet</span>
-              <!-- <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p> -->
-            </div>
-          </label>
-        </div>
+        
       </form>
     </div>
 
     <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-     
-       
+      <div class="relative">
+        <input type="radio" name="radio_address" class="peer hidden" checked>
+        <span
+          class="peer-checked:border-yellow-400 ml-4 absolute left top-1/2 box-content block h-1 w-1 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+        <label
+          class="peer-checked:border-2 peer-checked:border-yellow-400 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+          for="radio_address">
+          <div class="ml-8">
+            <!-- <span class="mt-2 font-semibold">{{ getUsers.name }}</span> -->
+            <p class="text-slate-500 text-sm leading-6">{{ getAddress.address }},{{ getAddress.phone }}</p>
+            <p class="text-slate-500 text-sm leading-6">{{ getAddress.city }}, {{ getAddress.state }},
+              {{getAddress.country }}.</p>
+            <p class="text-slate-500 text-sm leading-6">{{ getAddress.postal_code }}</p>
+      
+          </div>
+        </label>
+      </div>
+
+      
+
+
         <!-- Total -->
         <div class="mt-6 border-t border-b py-2">
           <div class="flex items-center justify-between">
             <p class="text-sm font-medium text-gray-900">Subtotal</p>
-            <p class="font-semibold text-gray-900">$399.00</p>
+            <p class="font-semibold text-gray-900">Rp.{{ totalHarga() }}</p>
           </div>
           <div class="flex items-center justify-between">
             <p class="text-sm font-medium text-gray-900">Shipping</p>
-            <p class="font-semibold text-gray-900">$8.00</p>
+            <p class="font-semibold text-gray-900">0</p>
           </div>
         </div>
         <div class="mt-6 flex items-center justify-between">
           <p class="text-sm font-medium text-gray-900">Total</p>
           <p class="text-2xl font-semibold text-gray-900">Rp.{{ totalHarga() }}</p>
         </div>
-      
-      <!-- <router-link to="/order"> -->
-      <button @click="performCheckout"
-        class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
-      <!-- </router-link>   -->
+
+        <!-- <router-link to="/order"> -->
+        <button @click="performCheckout"
+          class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
+        <!-- </router-link>   -->
+      </div>
     </div>
-  </div>
+  
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapState } from 'vuex';
 
 export default {
   data() {
@@ -158,12 +165,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('keranjang', ['getKeranjang','getDatakeranjang']),
+    ...mapGetters('keranjang', ['getKeranjang', 'getDatakeranjang','getAddress']),
+    ...mapGetters('user', ['getUsers']),
+    ...mapState('keranjang',['dataKeranjang'])
 
   },
   methods: {
     ...mapActions('keranjang', ['fetchKeranjang', 'fetchAddress']),
     ...mapActions('product', ['fetchProduk']),
+    ...mapActions('user', ['fetchUsers']),
 
     // total price
     totalHarga() {
@@ -192,10 +202,10 @@ export default {
 
       // Call the checkout action with the collected IDs and user address
       await this.$store.dispatch('keranjang/checkoutCart', checkoutPayload)
-      .then(() => {
+        .then(() => {
           this.$router.push(`/order/${this.getDatakeranjang.order_code}`);
         });
-      }
+    }
   },
   beforeMount() {
     this.fetchProduk();
@@ -204,5 +214,9 @@ export default {
   mounted() {
     this.fetchKeranjang();
   },
+  created(){
+    this.fetchUsers();
+    this.fetchAddress()
+  }
 }
 </script>

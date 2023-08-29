@@ -1,4 +1,5 @@
 <template>
+    
     <div v-if="getProduk == false">
         <div class="h-screen bg-white">
             <div class="flex justify-center items-center h-full">
@@ -7,7 +8,24 @@
         </div>
     </div>
     <div v-else>
-        <div class="mt-10 grid grid-cols-1 gap-1 sm:grid-cols-4 sm:gap-2 lg:mt-16">
+        <section class="dark:bg-gray-800 dark:text-gray-100">
+		<div class="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+			<div class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+				<h1 class="text-5xl font-bold leadi sm:text-6xl">
+					<span class="dark:text-violet-900">Vinn Shop</span>
+				</h1>
+				<p class="mt-6 mb-8 text-lg sm:mb-12">Bingung Mencari tempat belanja online ? vinn shop solusinya
+				</p>
+				<div class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+					<a rel="noopener noreferrer" href="#products" class="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100">Lihat Produk</a>
+				</div>
+			</div>
+			<div class="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+				<img src="https://img.freepik.com/free-vector/ecommerce-web-page-concept-illustration_114360-8204.jpg?size=626&ext=jpg&ga=GA1.1.975559454.1690599805&semt=ais" alt="" class="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+			</div>
+		</div>
+	</section>
+        <div class="mt-10 grid grid-cols-1 gap-1 sm:grid-cols-4 sm:gap-2 lg:mt-16" id="products">
             <!-- <div class="grid md:grid-cols-3 gap-8  mt-10 pl-5"></div> -->
         <div v-for="product in getProduk" :key="product.slug">
             <section class="bg-white py-12 text-gray-700 sm:py-16 lg:py-20">

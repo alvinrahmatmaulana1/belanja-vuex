@@ -1,55 +1,55 @@
 <template>
-    <div >
-        
-    <div class="flex items-center justify-center min-h-screen bg-gray-100 ">
-        <div class="px-8 py-6 mx-4 mt-20 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/">
-            <div class="flex justify-center">
-                <svg class="h-24 w-24x text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                    <line x1="3" y1="6" x2="21" y2="6" />
-                    <path d="M16 10a4 4 0 0 1-8 0" />
-                </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-center">Vinn Store</h3>
-            <form action="" @submit.prevent="performLogin">
-                <div class="mt-4">
-                    <div>
-                        <label class="block" for="Name">Username</label>
-                        <input type="text" placeholder="Name" v-model="email" id="email"
-                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-                    </div>
-                    <div class="mt-4">
-                        <label class="block">Password</label>
-                        <input type="password" placeholder="Password" v-model="password" id="password"
-                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-                    </div>
+    <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+        <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+            <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+                <!-- <div>
+                    <img src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
+                        class="w-32 mx-auto" />
+                </div> -->
+                <div class="mt-12 flex flex-col items-center">
+                    <h1 class="text-2xl xl:text-3xl font-extrabold">
+                        Login
+                    </h1>
+                    <form action="" @submit.prevent="performLogin">
+                        <div class="w-full flex-1 mt-8">
 
-                    <div class="flex">
-                        <button
-                            class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Login</button>
-                    </div>
-                    <div class="mt-6 text-grey-dark">
-                        Already have an acount?
-                        <a class="text-blue-600 hover:underline" href="/register">
-                            Register
-                        </a>
-                    </div>
+                            <div class="mx-auto max-w-xs">
+                                <input
+                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                    type="email" v-model="email" placeholder="Email" />
+                                <input
+                                    class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                    type="password" v-model="password" placeholder="Password" />
+                                <button
+                                    class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                    <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                        <circle cx="8.5" cy="7" r="4" />
+                                        <path d="M20 8v6M23 11h-6" />
+                                    </svg>
+                                    <span class="ml-3">
+                                        Login
+                                    </span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                
-            </form>
+            </div>
+            <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
+                <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+                    style="background-image: url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg');">
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-    <div >
-        gagal
-    </div>
-    
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-
+import Swal from 'sweetalert2'
 export default {
     data() {
         return {
@@ -66,10 +66,17 @@ export default {
             };
 
             const success = await this.login(credentials);
-            
+
 
             if (success) {
                 // Redirect to the desired route on successful login
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Berhasil Login',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 this.$router.push('/');
             } else {
                 alert("Login Failed");
